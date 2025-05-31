@@ -75,7 +75,7 @@
             ></div>
             <span>{{ node.nodeName }}</span>
           </h2>
-          <p class="text-sm text-gray-300">172.12.12.23:8000</p>
+          <p class="text-sm text-gray-300">{{ node.endpoint }}</p>
           <div
             :class="[
               node.status == 'warning'
@@ -138,6 +138,7 @@ const nodesData = [
     latency: '45ms',
     ssl: '44 days',
     uptime: '97.49%',
+    endpoint: '172.12.12.23:8000',
   },
   {
     nodeName: 'Frontend 2',
@@ -145,6 +146,7 @@ const nodesData = [
     latency: '45ms',
     ssl: '44 days',
     uptime: '97.49%',
+    endpoint: '172.12.12.23:8001',
   },
   {
     nodeName: 'Frontend 3',
@@ -152,6 +154,7 @@ const nodesData = [
     latency: '45ms',
     ssl: '44 days',
     uptime: '97.49%',
+    endpoint: '172.12.12.23:8002',
   },
   {
     nodeName: 'Frontend 4',
@@ -159,6 +162,7 @@ const nodesData = [
     latency: '45ms',
     ssl: '44 days',
     uptime: '97.49%',
+    endpoint: '172.12.12.23:8003',
   },
 ]
 </script>
