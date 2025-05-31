@@ -1,0 +1,8 @@
+@import 'tailwindcss';
+
+:root {
+  --pri: #1b2339;
+  --mygreen: #00e398;
+  --myyellow: #ffc21b;
+  --myred: #fe4d70;
+}
