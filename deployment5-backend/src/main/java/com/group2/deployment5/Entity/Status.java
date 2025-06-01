@@ -1,8 +1,6 @@
 package com.group2.deployment5.Entity;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -17,10 +15,26 @@ import java.time.LocalDateTime;
 @Entity
 public class Status {
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private Long targetId;
-    private boolean isOnline;
-    private long latency; // in ms
+
+    @ManyToOne(optional = false)
+    @JoinColumn(name = "target_id", nullable = false)
+    private Target target;
+
+    @Column(name = "http_status_code")
+    private int httpStatusCode;
+
+    @Column(name = "latency_ms")
+    private long latency; // milliseconds
+
+    @Column(name = "is_success")
+    private boolean success;
+
+    @Column(name = "checked_at")
     private LocalDateTime checkedAt;
+
+    // Optional: store response snippet or error message
+    @Column(name = "message", length = 1024)
+    private String message;
 }

@@ -16,8 +16,14 @@ public class Alert {
     @Id
     @GeneratedValue
     private Long id;
-    private Long targetId;
-    private String type; // email or webhook
-    private String destination;
-    private String rule; // JSON or expression
+
+    @ManyToOne(optional = false)
+    @JoinColumn(name = "target_id", nullable = false)
+    private Target target;
+
+    @ManyToOne(optional = false)
+    @JoinColumn(name = "status_id", nullable = false)
+    private Status status;
+
+    private String message;
 }

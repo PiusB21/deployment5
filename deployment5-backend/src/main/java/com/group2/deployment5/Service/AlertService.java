@@ -9,5 +9,5 @@ public interface AlertService {
     List<Alert> getAll();
     Alert getById(Long id);
     Alert create(Alert alert);
-    void triggerAlerts(Status status);
+    public void sendAlert(String messageBody);
 }
