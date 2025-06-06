@@ -55,7 +55,7 @@
         v-if="showSubjects"
         height="80%"
         fixed-header
-        class="rounded border min-h-[90vh] bg-red-300"
+        class="rounded border h-[80vh]"
       >
         <thead>
           <tr class="text-lg font-bold text-primary !bg-transparent">
