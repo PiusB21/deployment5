@@ -77,9 +77,9 @@
               ]"
               class="w-3 h-3 rounded-full"
             ></div>
-            <span>{{ node.target.name }}</span>
+            <span>{{ node?.target?.name }}</span>
           </h2>
-          <p class="text-sm text-gray-300 w-fit">{{ node.target.url }}</p>
+          <p class="text-sm text-gray-300 w-fit">{{ node?.target.url }}</p>
           <div
             :class="[
               node.httpStatusCode>=300 && node.httpStatusCode<=399
@@ -152,7 +152,6 @@ const getTargetsCountByStatus = ()=>{
       let targetStatus =  targetStatusData.value[key]
 
       console.log(targetStatus.httpStatusCode, "status mate");
-      
 
       if(getStatusLabel(targetStatus.httpStatusCode) == 'warning') generalData.value.warning++
       if(getStatusLabel(targetStatus.httpStatusCode) == 'healthy') generalData.value.healthy++
@@ -174,6 +173,8 @@ const getStatusLabel = (httpStatusCode)=>{
 const getTargetData = async()=>{  
   await axios.get(import.meta.env.VITE_APP_MONITORING_URL + "/target/all")
   .then((res)=>{
+    console.log(res);
+  
     if(res?.status!=200){
       console.error("Failed to Load Node Data")
       return
@@ -192,8 +193,11 @@ const getStatusForTargets = async()=>{
       return
     }
     else {
-      targetStatusData.value = res.data
+      console.log(res);
+      // targetStatusData.value = res.data
     }
+  }).catch((err)=>{
+    console.error(err.message)
   })
 }
 
@@ -210,11 +214,6 @@ const getStatusForTarget = async(id)=>{
   })  
 }
 
-const getStatusForEachTarget = async()=>{
-  targetData.value.forEach((target,index)=>{
-
-  })
-}
 
 function formatReadableDateTime(isoString) {
   const date = new Date(isoString);
@@ -236,7 +235,6 @@ function formatReadableDateTime(isoString) {
 onMounted(async()=>{
   await getTargetData()
   await getStatusForTargets()
-  await getStatusForEachTarget()
   getTargetsCountByStatus()
 })
 </script>
