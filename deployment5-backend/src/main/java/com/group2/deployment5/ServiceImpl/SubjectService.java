@@ -1,8 +1,8 @@
-package com.example.deployment_task.Service;
+package com.group2.deployment5.ServiceImpl;
 
-import com.example.deployment_task.DTO.SubjectDTO;
-import com.example.deployment_task.Entity.Subject;
-import com.example.deployment_task.Repo.SubjectRepository;
+import com.group2.deployment5.DTO.SubjectDTO;
+import com.group2.deployment5.Entity.Subject;
+import com.group2.deployment5.Repo.SubjectRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.RequestBody;

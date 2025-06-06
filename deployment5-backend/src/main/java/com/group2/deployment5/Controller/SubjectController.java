@@ -1,11 +1,11 @@
-package com.example.deployment_task.Controller;
+package com.group2.deployment5.Controller;
 
-import com.example.deployment_task.DTO.StudentDTO;
-import com.example.deployment_task.DTO.SubjectDTO;
-import com.example.deployment_task.Entity.Student;
-import com.example.deployment_task.Entity.Subject;
-import com.example.deployment_task.Service.StudentService;
-import com.example.deployment_task.Service.SubjectService;
+import com.group2.deployment5.DTO.StudentDTO;
+import com.group2.deployment5.DTO.SubjectDTO;
+import com.group2.deployment5.Entity.Student;
+import com.group2.deployment5.Entity.Subject;
+import com.group2.deployment5.ServiceImpl.StudentService;
+import com.group2.deployment5.ServiceImpl.SubjectService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;

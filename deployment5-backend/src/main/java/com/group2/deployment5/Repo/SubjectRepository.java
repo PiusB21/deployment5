@@ -1,6 +1,6 @@
-package com.example.deployment_task.Repo;
+package com.group2.deployment5.Repo;
 
-import com.example.deployment_task.Entity.Subject;
+import com.group2.deployment5.Entity.Subject;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.Optional;

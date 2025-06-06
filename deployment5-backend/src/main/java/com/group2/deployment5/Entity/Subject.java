@@ -1,4 +1,4 @@
-package com.example.deployment_task.Entity;
+package com.group2.deployment5.Entity;
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
