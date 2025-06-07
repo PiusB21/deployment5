@@ -32,22 +32,36 @@ services:
       - "8080:8080"
 
   frontend1:
-    image: your-dockerhub-username/frontend-image:latest
+    image: piusb21/deployment5-frontend:v1
+    volumes:
+      - ../deployment5-frontend/configs/frontend1.json:/usr/share/nginx/html/config.json
     container_name: frontend1
     networks:
       - app-network
 
   frontend2:
-    image: your-dockerhub-username/frontend-image:latest
+    image: piusb21/deployment5-frontend:v1
+    volumes:
+      - ../deployment5-frontend/configs/frontend2.json:/usr/share/nginx/html/config.json    
     container_name: frontend2
     networks:
       - app-network
 
   frontend3:
-    image: your-dockerhub-username/frontend-image:latest
+    image: piusb21/deployment5-frontend:v1
+    volumes:
+      - ../deployment5-frontend/configs/frontend3.json:/usr/share/nginx/html/config.json    
     container_name: frontend3
     networks:
       - app-network
+
+  frontend4:
+    image: piusb21/deployment5-frontend:v1
+    volumes:
+      - ../deployment5-frontend/configs/frontend4.json:/usr/share/nginx/html/config.json
+    container_name: frontend4
+    networks:
+      - app-network      
 
   nginx:
     image: nginx:latest
