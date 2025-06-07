@@ -193,8 +193,7 @@ const getStatusForTargets = async()=>{
       return
     }
     else {
-      console.log(res);
-      // targetStatusData.value = res.data
+      targetStatusData.value = res.data
     }
   }).catch((err)=>{
     console.error(err.message)
@@ -209,7 +208,7 @@ const getStatusForTarget = async(id)=>{
       return
     }
     else {
-      //targetData.value = res.data
+      targetData.value = res.data
     }
   })  
 }

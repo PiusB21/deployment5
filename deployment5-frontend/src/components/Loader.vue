@@ -10,8 +10,8 @@
 
 <style scoped>
 .loadingspinner {
-  --square: 26px;
-  --offset: 30px;
+  --square: 20px;
+  --offset: 24px;
   --duration: 2.4s;
   --delay: 0.2s;
   --timing-function: ease-in-out;

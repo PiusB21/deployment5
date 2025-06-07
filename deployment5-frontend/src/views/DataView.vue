@@ -1,5 +1,5 @@
 <template>
-        <Loader v-if="isLoading" />
+    <Loader v-if="isLoading" />
     <div v-motion-fade class="h-[80%] w-full flex flex-col gap-4" v-else>
       
       <div class="text-2xl text-white">Click Button to fetch Data</div>
