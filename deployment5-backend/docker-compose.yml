@@ -17,7 +17,7 @@ services:
       - "5432:5432"
 
   backend:
-    image: piusb21/deployment5-backend:v1
+    image: piusb21/deployment5-backend:v2
     container_name: springboot-api
     restart: always
     environment:
@@ -32,34 +32,40 @@ services:
       - "8080:8080"
 
   frontend1:
-    image: piusb21/deployment5-frontend:v1
+    image: piusb21/deployment5-frontend:v2
     volumes:
-      - ../deployment5-frontend/configs/frontend1.json:/usr/share/nginx/html/config.json
+      - ./configs/frontend1.json:/usr/share/nginx/html/config.json
     container_name: frontend1
+    ports:
+      - "8083:80"
     networks:
       - app-network
 
   frontend2:
-    image: piusb21/deployment5-frontend:v1
+    image: piusb21/deployment5-frontend:v2
     volumes:
-      - ../deployment5-frontend/configs/frontend2.json:/usr/share/nginx/html/config.json    
+      - ./configs/frontend2.json:/usr/share/nginx/html/config.json    
     container_name: frontend2
     networks:
       - app-network
 
   frontend3:
-    image: piusb21/deployment5-frontend:v1
+    image: piusb21/deployment5-frontend:v2
     volumes:
-      - ../deployment5-frontend/configs/frontend3.json:/usr/share/nginx/html/config.json    
+      - ./configs/frontend3.json:/usr/share/nginx/html/config.json    
     container_name: frontend3
+    ports:
+      - "8084:80"
     networks:
       - app-network
 
   frontend4:
-    image: piusb21/deployment5-frontend:v1
+    image: piusb21/deployment5-frontend:v2
     volumes:
-      - ../deployment5-frontend/configs/frontend4.json:/usr/share/nginx/html/config.json
+      - ./configs/frontend4.json:/usr/share/nginx/html/config.json
     container_name: frontend4
+    ports:
+      - "8085:80"
     networks:
       - app-network      
 
