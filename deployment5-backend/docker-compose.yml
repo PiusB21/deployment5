@@ -1,0 +1,70 @@
+version: '3.8'
+
+services:
+  postgres:
+    image: postgres:14
+    container_name: postgres-db
+    restart: always
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: CodeIsLife
+      POSTGRES_DB: deployment5
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    networks:
+      - app-network
+    ports:
+      - "5432:5432"
+
+  backend:
+    image: piusb21/deployment5-backend:v1
+    container_name: springboot-api
+    restart: always
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:postgresql://postgres:5432/deployment5
+      SPRING_DATASOURCE_USERNAME: postgres
+      SPRING_DATASOURCE_PASSWORD: CodeIsLife
+    depends_on:
+      - postgres
+    networks:
+      - app-network
+    ports:
+      - "8080:8080"
+
+  frontend1:
+    image: your-dockerhub-username/frontend-image:latest
+    container_name: frontend1
+    networks:
+      - app-network
+
+  frontend2:
+    image: your-dockerhub-username/frontend-image:latest
+    container_name: frontend2
+    networks:
+      - app-network
+
+  frontend3:
+    image: your-dockerhub-username/frontend-image:latest
+    container_name: frontend3
+    networks:
+      - app-network
+
+  nginx:
+    image: nginx:latest
+    container_name: frontend-lb
+    ports:
+      - "80:80"
+    volumes:
+      - ./nginx.conf:/etc/nginx/nginx.conf:ro
+    depends_on:
+      - frontend1
+      - frontend2
+      - frontend3
+    networks:
+      - app-network
+
+volumes:
+  postgres_data:
+
+networks:
+  app-network:

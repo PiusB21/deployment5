@@ -1,34 +1,24 @@
-# a lightweight JDK base image
+# Use a lightweight JDK base image
 FROM openjdk:17-jdk-slim
 
-# environment variables (optional)
+# Optional environment variable
 ENV SERVER_PORT=8080
 
-# thats the working directory created inside the container
+# Set working directory
 WORKDIR /app
 
-# Copy the Maven or Gradle wrapper and configuration files
-COPY mvnw .
-COPY .mvn .mvn
-COPY pom.xml .
+# Copy everything at once (or separately if preferred)
+COPY . .
 
-# Download dependencies only (faster rebuilds)
-RUN ./mvnw dependency:go-offline
+# Grant execute permissions to the Maven wrapper
+RUN chmod +x mvnw
 
-# Copy the rest of the source code
-COPY src ./src
-
-# Build the application using Maven
+# Build the app using the Maven wrapper
 RUN ./mvnw clean package -DskipTests
 
-# copy your Spring Boot jar file into the container
-COPY --from=builder /app/target/*.jar app.jar
-
-# 5. Expose the port your app runs on
+# Expose port
 EXPOSE 8080
 
-# 6. Command to run the application
-ENTRYPOINT ["java", "-jar", "app.jar"]
-
-
+# Run the built jar
+ENTRYPOINT ["java", "-jar", "target/app.jar"]
 
