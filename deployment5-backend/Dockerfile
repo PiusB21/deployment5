@@ -31,12 +31,4 @@ EXPOSE 8080
 ENTRYPOINT ["java", "-jar", "app.jar"]
 
 
-# Use a base image with JDK 17+ (compatible with most Spring Boot apps)
-FROM eclipse-temurin:17-jdk-alpine as builder
-
-# Set the working directory inside the container
-WORKDIR /app
-
-# docker build -t piusb21/deployment5-backend:v1 .
-
 
