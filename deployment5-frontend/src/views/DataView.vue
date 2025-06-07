@@ -107,26 +107,19 @@ const showSubjectsFunction = () => {
 }
 
 const getStudents = async () => {
-  await axios.get(`${import.meta.env.VITE_APP_DATA_URL}/student/all`).then((res) => {
+  await axios.get(`${import.meta.env.VITE_APP_BASE_URL}/student/all`).then((res) => {
     studentsData.value = res.data
   })
 }
 
 const getSubjects = async () => {
-  await axios.get(`${import.meta.env.VITE_APP_DATA_URL}/subject/all`).then((res) => {
+  await axios.get(`${import.meta.env.VITE_APP_BASE_URL}/subject/all`).then((res) => {
     subjectsData.value = res.data
   })
 }
 
-const nodeId = ref(null)
-
-const getNodeId = async () => {
-    nodeId.value = import.meta.env.VITE_APP_NODE_ID
-}
 
 onMounted(() => {
-  getNodeId()
-
   getStudents()
   getSubjects()
 

@@ -17,6 +17,20 @@
 
 
 <script setup>
-const nodeId = import.meta.env.VITE_APP_NODE_ID
+import { onMounted,ref } from 'vue';
+import axios from "axios"
+
+const nodeId = ref('')
+
+const fetchId = async()=>{
+  await axios.get("/config.json").then(res => {
+    nodeId.value = res.data.VITE_APP_NODE_ID;
+  })
+} 
+
+onMounted(async()=>{
+  await fetchId()
+})
+
 </script>
 

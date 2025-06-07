@@ -171,7 +171,7 @@ const getStatusLabel = (httpStatusCode)=>{
 }
 
 const getTargetData = async()=>{  
-  await axios.get(import.meta.env.VITE_APP_MONITORING_URL + "/target/all")
+  await axios.get(import.meta.env.VITE_APP_BASE_URL + "/target/all")
   .then((res)=>{
     console.log(res);
   
@@ -186,7 +186,7 @@ const getTargetData = async()=>{
 }
 
 const getStatusForTargets = async()=>{
-  await axios.get(import.meta.env.VITE_APP_MONITORING_URL + "/status/all")
+  await axios.get(import.meta.env.VITE_APP_BASE_URL + "/status/all")
   .then((res)=>{
     if(res?.status!=200){
       console.error("Failed to Status Data")
@@ -201,7 +201,7 @@ const getStatusForTargets = async()=>{
 }
 
 const getStatusForTarget = async(id)=>{
-  await axios.get(import.meta.env.VITE_APP_MONITORING_URL + `/status/all/${id}`)
+  await axios.get(import.meta.env.VITE_APP_BASE_URL + `/status/all/${id}`)
   .then((res)=>{
     if(res?.status!=200){
       console.error("Failed to Status Data")
